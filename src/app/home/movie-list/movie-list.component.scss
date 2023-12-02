@@ -1,0 +1,20 @@
+img{
+  cursor: pointer;
+}
+
+@media (min-width: 992px) {
+  img {
+    height: 600px; /* Defina a altura desejada para telas grandes */
+    max-height: 100%; /* Certifique-se de que a altura não ultrapasse 100% da altura do contêiner pai, se houver */
+    width: auto; /* Isso garante que a largura seja ajustada proporcionalmente à altura */
+  }
+}
+
+/* Para telas pequenas (sm) */
+@media (max-width: 991px) {
+  img {
+    height: 700px; /* Defina a altura desejada para telas pequenas */
+    max-height: 100%; /* Certifique-se de que a altura não ultrapasse 100% da altura do contêiner pai, se houver */
+    width: auto; /* Isso garante que a largura seja ajustada proporcionalmente à altura */
+  }
+}

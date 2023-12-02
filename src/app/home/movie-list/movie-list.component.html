@@ -1,0 +1,27 @@
+<div class="container mt-3">
+  <div class="g-3 row">
+    <div class="col-lg-6 col-12"  *ngFor="let movie of movieList">
+        <mat-card class="mat-elevation-z8">
+          <mat-card-header>
+            <h1>{{movie.title}}</h1>
+          </mat-card-header>
+            <img mat-card-image title="Go to movie details" src="{{movie.image}}">
+          <mat-card-content>
+            <p class="mt-4">
+              Released date: {{movie.releasedDate | date: 'longDate'}}<br>
+              Rating: {{movie.rating}}
+            </p>
+            <mat-card-actions *ngIf="!movie.add" class="d-flex justify-content-end">
+            <button  mat-raised-button color="primary" (click)="addToWatchList(movie)">Add to whatchlist </button>
+          </mat-card-actions>
+            <mat-card-actions *ngIf="movie.add" class="d-flex justify-content-between">
+              <p>On my whatchlist !!</p>
+              <button  mat-raised-button color="primary" (click)="removeFromWatchList(movie)">Remove from whatchlist </button>
+            </mat-card-actions>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+
+  </div>
+</div>
