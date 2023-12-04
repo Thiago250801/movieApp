@@ -1,27 +1,43 @@
-<div class="container mt-3">
+<div class="container py-3">
+  <div class="row">
+    <div class="col-lg-6 col-12">
+      <mat-form-field color="warn" class="example-form-field w-100" appearance="outline">
+        <mat-label>Search</mat-label>
+        <input  matInput type="text" [(ngModel)]="searchTitle" >
+      </mat-form-field>
+
+    </div>
+    <div class="col-lg-3 col-12 ">
+      <button class="w-100" mat-fab extended color="warn" (click)="sortByTitle()">Sort by Title</button>
+    </div>
+    <div class="col-lg-3 col-12">
+      <button class="w-100" mat-fab extended color="warn" (click)="sortByReleasedDate()">Sort by Released Date</button>
+    </div>
+  </div>
+
+
   <div class="g-3 row">
-    <div class="col-lg-6 col-12"  *ngFor="let movie of movieList">
-        <mat-card class="mat-elevation-z8">
-          <mat-card-header>
-            <h1>{{movie.title}}</h1>
+    <div class="col-lg-6 col-12 "  *ngFor="let movie of movieList  | search: searchTitle">
+        <mat-card class="bg-light">
+          <mat-card-header >
+            <mat-card-title>{{movie.title}}</mat-card-title>
           </mat-card-header>
-            <img mat-card-image title="Go to movie details" src="{{movie.image}}">
+            <img (click)="movieDetail()" mat-card-image title="Go to movie details" src="{{movie.image}}">
           <mat-card-content>
             <p class="mt-4">
               Released date: {{movie.releasedDate | date: 'longDate'}}<br>
               Rating: {{movie.rating}}
             </p>
             <mat-card-actions *ngIf="!movie.add" class="d-flex justify-content-end">
-            <button  mat-raised-button color="primary" (click)="addToWatchList(movie)">Add to whatchlist </button>
+            <button  mat-raised-button color="warn" (click)="add(movie)">Add to whatchlist </button>
           </mat-card-actions>
-            <mat-card-actions *ngIf="movie.add" class="d-flex justify-content-between">
+            <mat-card-actions *ngIf="movie.add" class="d-flex justify-content-between align-items-center">
               <p>On my whatchlist !!</p>
-              <button  mat-raised-button color="primary" (click)="removeFromWatchList(movie)">Remove from whatchlist </button>
+              <button  mat-raised-button color="warn" (click)="remove(movie)">Remove</button>
             </mat-card-actions>
           </mat-card-content>
         </mat-card>
       </div>
-
-
   </div>
 </div>
+

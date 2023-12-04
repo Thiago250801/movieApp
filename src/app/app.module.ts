@@ -6,8 +6,11 @@ import {HeaderComponent} from "./core/header/header.component";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {AngularMaterialModule} from "../shared/angular-material/angular-material.module";
 import {MovieDetailComponent} from "./feature/movie-detail/movie-detail.component";
-import {WatchlistComponent} from "./whatchlistc/watchlist.component";
+import {WatchlistComponent} from "./watchlist/watchlist.component";
 import {MovieListComponent} from "./home/movie-list/movie-list.component";
+import {StorageService} from "./service/storage.service";
+import {FormsModule} from "@angular/forms";
+import { SearchPipe } from './pipe/search.pipe';
 
 @NgModule({
   declarations: [
@@ -15,15 +18,17 @@ import {MovieListComponent} from "./home/movie-list/movie-list.component";
     HeaderComponent,
     MovieDetailComponent,
     WatchlistComponent,
-    MovieListComponent
+    MovieListComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [StorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
