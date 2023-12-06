@@ -1,16 +1,87 @@
 <div class="container">
   <h1 class="text-center mb-3">Movie detail</h1>
-  <mat-card class="example-card">
-    <mat-card-header>
-      <mat-card-title-group>
-        <mat-card-title>Shiba Inu</mat-card-title>
-        <mat-card-subtitle>Large</mat-card-subtitle>
-      </mat-card-title-group>
-      <img mat-card-xl-image class="w-auto"  src="{{movieDetail?.image}}" >
+  <div class="card mb-3">
+    <div class="card-header">{{movieDetail?.title}}</div>
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{{movieDetail?.image}}" class="img-fluid " alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
 
-    </mat-card-header>
-    <mat-card-content>
-      {{movieDetail?.description}}
-    </mat-card-content>
-  </mat-card>
+          <p class="card-text"><span class="fw-bold">Rating:  </span><span class="badge">{{movieDetail?.rating}}</span></p>
+          <p class="card-text"><span class="fw-bold">Trailer: </span><a class="link-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Click here to watch the trailer !
+            </a>
+
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer bg-transparent"><span class="fw-bold">Genre:  </span>{{movieDetail?.genre}}</div>
+  </div>
 </div>
+
+
+
+<!-- Modal -->
+<div class="modal videomodal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <iframe
+          src="https://www.youtube.com/embed/tmeOjFno6Do"
+          frameborder="0"
+          allowfullscreen >
+        </iframe>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="wrapper">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col text-center">
+          <div class="h1 text-light">YouTube video in Bootstrap 3/4/5 Modal</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="card w-75 mx-auto">
+            <button class="btn p-0 js-play" type="button" data-toggle="modal" data-target="#modalVideo" data-src="c7nRTF2SowQ" data-title="Официальный анонс-трейлер Battlefield 1"><img class="card-img-top" src="https://img.youtube.com/vi/c7nRTF2SowQ/maxresdefault.jpg" alt="Официальный анонс-трейлер Battlefield 1"/></button>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card w-75 mx-auto">
+            <button class="btn p-0 js-play" type="button" data-toggle="modal" data-target="#modalVideo" data-src="omWEZI0cT1g" data-title="DOOM - Fight Like Hell Cinematic Trailer"><img class="card-img-top" src="https://img.youtube.com/vi/omWEZI0cT1g/maxresdefault.jpg" alt="DOOM - Fight Like Hell Cinematic Trailer"/></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="modalVideo">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title js-title-insert"></h5>
+          <button class="close js-pause" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body px-0 py-0">
+          <div class="embed-responsive embed-responsive-16by9">
+            <div class="embed-responsive-item" id="youTubeIframe"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Add youtube api-->
+  <script src="https://www.youtube.com/iframe_api"></script>
+
+
+</div>
+
+
