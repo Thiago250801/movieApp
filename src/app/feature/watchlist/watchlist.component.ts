@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Movie} from "../interface/movie";
-import {WatchlistStateService} from "../service/watchlist-state.service";
+import {Movie} from "../../interface/movie";
+import {WatchlistStateService} from "../../service/watchlist-state.service";
 
 
 @Component({
