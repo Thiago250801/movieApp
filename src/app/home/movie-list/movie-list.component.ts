@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Movie} from "../../interface/movie";
 import {StorageService} from "../../service/storage.service";
-import {WatchlistStateService} from "../../service/watchlist-state.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-movie-list',
@@ -15,13 +15,14 @@ export class MovieListComponent implements OnInit{
   searchTitle: string = '';
   constructor(
     private storageService: StorageService,
-    private watchlistState: WatchlistStateService
+    private router: Router
   ) {
   }
 
   ngOnInit() {
     this.movieList = [
       {
+        id: 1,
         title: 'Tenent',
         description:'Armed with only one word, Tenet, and fighting for the survival of the entire world, a\n' +
           'Protagonist journeys through a twilight world of international espionage on a mission that will unfold in\n' +
@@ -34,6 +35,7 @@ export class MovieListComponent implements OnInit{
         trailer: 'https://www.youtube.com/watch?v=LdOM0x0XDMo'
       },
       {
+        id:2,
         title: 'Spider-Man: Into the Spider-Verse',
         description:'Teen Miles Morales becomes the Spider-Man of his universe, and must join with five spider-\n' +
           'powered individuals from other dimensions to stop a threat for all realities.',
@@ -45,6 +47,7 @@ export class MovieListComponent implements OnInit{
         trailer: 'https://www.youtube.com/watch?v=tg52up16eq0'
       },
       {
+        id: 3,
         title: 'Kineves Out',
         description:'A detective investigates the death of a patriarch of an eccentric, combative family.',
         rating: 7.9,
@@ -55,6 +58,7 @@ export class MovieListComponent implements OnInit{
         trailer: 'https://www.youtube.com/watch?v=qGqiHJTsRkQ'
       },
       {
+        id:4,
         title: 'Guardians of the Galaxy',
         description:'A group of intergalactic criminals must pull together to stop a fanatical warrior with plans to\n' +
           'purge the universe.',
@@ -66,6 +70,7 @@ export class MovieListComponent implements OnInit{
         trailer: 'https://www.youtube.com/watch?v=d96cjJhvlMA'
       },
       {
+        id: 5,
         title: 'Avengers: Age of Ultron',
         description:'When Tony Stark and Bruce Banner try to jump-start a dormant peacekeeping program\n' +
           'called Ultron, things go horribly wrong and it\'s up to Earth\'s mightiest heroes to stop the villainous Ultron\n' +
@@ -109,8 +114,19 @@ export class MovieListComponent implements OnInit{
     this.storageService.removeFromWatchlist(movie)
   }
 
-  movieDetail() {
-    console.log("teste")
+  movieDetail(movie: Movie) {
+    this.storageService.setMovieDetail({
+      id: movie.id,
+      title: movie.title,
+      description: movie.description,
+      rating: movie.rating,
+      duration: movie.duration,
+      genre: movie.genre,
+      releasedDate: movie.releasedDate,
+      image: movie.image,
+      trailer: movie.trailer,
+    })
+    this.router.navigate(['movie-detail', movie.id]);
   }
 
   sortByTitle(): void {

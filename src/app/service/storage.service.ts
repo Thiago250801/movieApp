@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {Movie} from "../interface/movie";
-import {WatchlistStateService} from "./watchlist-state.service";
 import {BehaviorSubject, Observable} from "rxjs";
 
 @Injectable({
@@ -10,6 +9,7 @@ export class StorageService {
   private watchlistSubject = new BehaviorSubject<Movie[]>([]);
   watchlist$: Observable<Movie[]> = this.watchlistSubject.asObservable();
   private watchlistKey = 'watchlist';
+  private movieDetailKey = 'movieDetail'
   constructor() {
     this.loadWatchlist();
   }
@@ -43,5 +43,18 @@ export class StorageService {
     this.watchlistSubject.next(watchlist);
     this.saveWatchlist(watchlist);
   }
+  getMovieDetail(): Movie | null {
+    const storedData = localStorage.getItem(this.movieDetailKey);
+    return storedData ? JSON.parse(storedData) : null;
+  }
+
+  setMovieDetail(movie: Movie): void {
+    localStorage.setItem(this.movieDetailKey, JSON.stringify(movie));
+  }
+
+  clearMovieDetail(): void {
+    localStorage.removeItem(this.movieDetailKey);
+  }
+
 }
 

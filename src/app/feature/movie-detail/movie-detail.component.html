@@ -1,1 +1,16 @@
-<p>movie-detail works!</p>
+<div class="container">
+  <h1 class="text-center mb-3">Movie detail</h1>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title-group>
+        <mat-card-title>Shiba Inu</mat-card-title>
+        <mat-card-subtitle>Large</mat-card-subtitle>
+      </mat-card-title-group>
+      <img mat-card-xl-image class="w-auto"  src="{{movieDetail?.image}}" >
+
+    </mat-card-header>
+    <mat-card-content>
+      {{movieDetail?.description}}
+    </mat-card-content>
+  </mat-card>
+</div>

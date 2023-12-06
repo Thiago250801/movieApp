@@ -22,7 +22,7 @@
           <mat-card-header >
             <mat-card-title>{{movie.title}}</mat-card-title>
           </mat-card-header>
-            <img (click)="movieDetail()" mat-card-image title="Go to movie details" src="{{movie.image}}">
+            <img (click)="movieDetail(movie)" mat-card-image title="Go to movie details" alt="{{movie.image}}" src="{{movie.image}}">
           <mat-card-content>
             <p class="mt-4">
               Released date: {{movie.releasedDate | date: 'longDate'}}<br>
@@ -32,7 +32,7 @@
             <button  mat-raised-button color="warn" (click)="add(movie)">Add to whatchlist </button>
           </mat-card-actions>
             <mat-card-actions *ngIf="movie.add" class="d-flex justify-content-between align-items-center">
-              <p>On my whatchlist !!</p>
+              <p class="wl-warning  fs-4">On my whatchlist!!</p>
               <button  mat-raised-button color="warn" (click)="remove(movie)">Remove</button>
             </mat-card-actions>
           </mat-card-content>
