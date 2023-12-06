@@ -19,7 +19,7 @@ import { SearchPipe } from './pipe/search.pipe';
     MovieDetailComponent,
     WatchlistComponent,
     MovieListComponent,
-    SearchPipe
+    SearchPipe,
   ],
   imports: [
     BrowserModule,

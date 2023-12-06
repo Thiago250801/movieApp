@@ -1,12 +1,15 @@
 
 <div class="container">
   <div *ngIf="watchlist.length > 0; else noMovies">
-    <div *ngFor="let movie of watchlist">
-      <h2>{{ movie.title }}</h2>
-    </div>
+    <ul class="list-group ">
+      <li *ngFor="let movie of watchlist"  class="list-group-item">{{ movie.title }}</li>
+    </ul>
+
   </div>
 
   <ng-template #noMovies>
     <div class="alert alert-warning">There are no films on your watchlist yet. Please make sure you have added a movie so you can indentify it here !!!</div>
   </ng-template>
 </div>
+
+
