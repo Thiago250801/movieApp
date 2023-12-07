@@ -105,12 +105,10 @@ export class MovieListComponent implements OnInit{
     }));
   }
   add(movie: Movie) {
-    movie.add = true
     this.storageService.addToWatchlist(movie)
   }
 
   remove(movie: Movie){
-    movie.add = false
     this.storageService.removeFromWatchlist(movie)
   }
 
@@ -125,6 +123,7 @@ export class MovieListComponent implements OnInit{
       releasedDate: movie.releasedDate,
       image: movie.image,
       trailer: movie.trailer,
+      add:movie.add,
     })
     this.router.navigate(['movie-detail', movie.id]);
   }

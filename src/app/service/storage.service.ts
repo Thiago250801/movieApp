@@ -27,15 +27,16 @@ export class StorageService {
     return this.watchlistSubject.value;
   }
 
-  addToWatchlist(movie: Movie): void {
+    addToWatchlist(movie: Movie ): void {
     const watchlist: Movie[] = this.getWatchlist();
+    movie.add = true
     watchlist.push(movie);
     this.updateWatchlist(watchlist);
   }
 
-  removeFromWatchlist(movie: Movie): void {
+  removeFromWatchlist(movie: Movie ): void {
     let watchlist: Movie[] = this.getWatchlist();
-    watchlist = watchlist.filter(item => item.title !== movie.title);
+    watchlist = watchlist.filter(item => item.id !== movie.id);
     this.updateWatchlist(watchlist);
   }
 

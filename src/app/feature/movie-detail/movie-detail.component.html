@@ -1,7 +1,21 @@
 <div class="container">
+
+
+
   <h1 class="text-center mb-3">Movie detail</h1>
+
+  <div *ngIf="movieDetail?.add === true" class="alert alert-warning" role="alert">
+    This movie is in your watchlist!!
+  </div>
   <div class="card mb-3">
-    <div class="card-header">{{movieDetail?.title}}</div>
+    <div class="card-header">
+      <div class="d-flex justify-content-between">
+        <div>
+          {{movieDetail?.title}}
+        </div>
+
+      </div>
+    </div>
     <div class="row g-0">
       <div class="col-md-4">
         <img src="{{movieDetail?.image}}" class="img-fluid " alt="...">
@@ -22,6 +36,15 @@
     </div>
     <div class="card-footer bg-transparent"><span class="fw-bold">Genre:  </span>{{movieDetail?.genre}}</div>
   </div>
+
+  <div *ngIf="movieDetail?.add === false" class="d-flex mt-3 justify-content-end">
+      <button mat-button mat-raised-button color="warn" (click)="add()">Add to whatchlist</button>
+  </div>
+
+  <div *ngIf="movieDetail?.add === true" class="d-flex mt-3 justify-content-end">
+    <button mat-button mat-raised-button color="warn" (click)="remove()" >Remove from watchlist</button>
+  </div>
+
 </div>
 
 

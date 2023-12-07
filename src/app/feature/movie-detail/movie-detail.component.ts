@@ -9,10 +9,10 @@ import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
   styleUrls: ['./movie-detail.component.scss']
 })
 export class MovieDetailComponent implements OnInit, OnDestroy{
-  movieDetail? : Movie | null
+  movieDetail: Movie | null | undefined
   videoCode: string | null = null;
   videoUrl?: SafeResourceUrl;
-
+  movie?: Movie[];
 
   @ViewChild('exampleModal') modal: any;
   @ViewChild('videoIframe') videoIframe: ElementRef | undefined;
@@ -26,8 +26,6 @@ export class MovieDetailComponent implements OnInit, OnDestroy{
     this.movieDetail = this.storageService.getMovieDetail()
     this.extractVideoCode()
     this.videoUrl = this.getSafeUrl(this.videoCode)
-    console.log(this.videoUrl)
-    console.log(this.movieDetail?.duration)
   }
 
   formatDuration(): string {
@@ -63,6 +61,22 @@ export class MovieDetailComponent implements OnInit, OnDestroy{
     this.storageService.clearMovieDetail()
   }
 
+  add() {
+    console.log('Add Method Called');
+    if (this.movieDetail) {
+      console.log('Adding to Watchlist:', this.movieDetail);
+      this.movieDetail.add = true;
+      this.storageService.addToWatchlist(this.movieDetail);
+    }
+  }
+  remove() {
+    console.log('Remove Method Called');
+    if (this.movieDetail) {
+      console.log('Removing from Watchlist:', this.movieDetail);
+      this.movieDetail.add = false;
+      this.storageService.removeFromWatchlist(this.movieDetail);
+    }
+  }
 
 
   closeModal() {
